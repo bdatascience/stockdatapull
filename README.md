@@ -2,8 +2,8 @@
 
 This repository contains a small script for downloading historical data for the
 SPY ETF using [yfinance](https://github.com/ranaroussi/yfinance). The script
-retrieves daily OHLCV data and dividend information and stores them as CSV
-files.
+retrieves price data and dividend information and stores them as CSV files. By
+default the price data includes only the first trading day of each month.
 
 ## Requirements
 
@@ -35,8 +35,8 @@ python pull_stock_data.py
 
 This will generate the following files in the repository directory:
 
-* `SPY_ohlc.csv` – daily OHLCV data
-* `SPY_dividends.csv` – dividend data
+* `SPY_monthly_ohlc.csv` – the first trading day of each month
+* `SPY_dividends.csv` – dividend data for the same period
 
 You can adjust the ticker or date ranges by editing `pull_stock_data.py`.
 
