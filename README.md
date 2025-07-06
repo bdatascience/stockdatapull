@@ -7,11 +7,23 @@ files.
 
 ## Requirements
 
-Install the required Python packages using `pip`:
+Python 3.8 or newer is required. Install the dependencies with `pip`:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+### Installing Python on Windows
+
+1. Download Python from the [official site](https://www.python.org/downloads/windows/).
+2. Run the installer and select **Add Python to PATH**.
+3. Open a new command prompt and check the version:
+
+```bash
+python --version
+```
+
+The command should print a version number of 3.8 or higher.
 
 ## Running the script
 
