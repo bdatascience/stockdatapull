@@ -11,6 +11,7 @@ symbol = st.text_input("Ticker symbol", "SPY")
 start_date = st.date_input("Start date", value=date(2022, 1, 1))
 end_date = st.date_input("End date", value=date.today())
 monthly_only = st.checkbox("First day of each month only", value=True)
+show_dividends = st.checkbox("Download dividends", value=True)
 
 if st.button("Download Data"):
     if not symbol:
@@ -25,3 +26,13 @@ if st.button("Download Data"):
         data.to_csv(file_name)
         st.success(f"Data saved to {file_name}")
         st.dataframe(data)
+        if show_dividends:
+            ticker = yf.Ticker(symbol)
+            dividends = ticker.dividends.loc[str(start_date):str(end_date)]
+            div_file = f"{symbol}_dividends_{start_date}_{end_date}.csv"
+            if not dividends.empty:
+                dividends.to_csv(div_file)
+                st.success(f"Dividends saved to {div_file}")
+                st.dataframe(dividends)
+            else:
+                st.info("No dividend data found for the selected period")
