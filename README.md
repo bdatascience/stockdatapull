@@ -54,7 +54,7 @@ From a Bash shell you can also start it with:
 bash -c 'streamlit run streamlit_app.py'
 ```
 
-Choose a single ticker and the date range in the app. The resulting OHLC data will be saved as
+Choose the ticker and dates in the app. The resulting OHLC data will be saved as
 `<TICKER>_<START>_<END>.csv` and previewed in the browser. If you select the
 **Download dividends** option, a single file containing both closing prices and
 dividends will be created. The combined column is named
