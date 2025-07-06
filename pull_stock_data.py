@@ -1,4 +1,4 @@
-"""Utility for downloading SPY price data and dividends."""
+"""Utility for downloading QQQ price data and dividends."""
 
 from __future__ import annotations
 
@@ -29,11 +29,11 @@ def filter_first_day_month(data: pd.DataFrame) -> pd.DataFrame:
 
 
 def main() -> None:
-    """Download monthly SPY data and dividend information."""
+    """Download monthly QQQ data and dividend information."""
     start = "2022-01-01"
     end = "2024-12-31"
 
-    ticker = yf.Ticker("SPY")
+    ticker = yf.Ticker("QQQ")
 
     # Get daily OHLCV data and reduce to first row of each month
     daily = ticker.history(start=start, end=end, interval="1d")
@@ -43,8 +43,8 @@ def main() -> None:
     dividends = ticker.dividends.loc[start:end]
 
     # Save to CSV files
-    monthly.to_csv("SPY_monthly_ohlc.csv")
-    dividends.to_csv("SPY_dividends.csv")
+    monthly.to_csv("QQQ_monthly_ohlc.csv")
+    dividends.to_csv("QQQ_dividends.csv")
 
 
 if __name__ == "__main__":
