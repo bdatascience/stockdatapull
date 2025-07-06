@@ -1,14 +1,17 @@
+import argparse
 import yfinance as yf
 
-# Load SPY ETF
-ticker = yf.Ticker("SPY")
+parser = argparse.ArgumentParser(description="Download historical stock data")
+parser.add_argument("--ticker", default="SPY", help="Ticker symbol to download")
+parser.add_argument("--start", default="2022-01-01", help="Start date in YYYY-MM-DD format")
+parser.add_argument("--end", default="2024-12-31", help="End date in YYYY-MM-DD format")
+args = parser.parse_args()
+ticker = yf.Ticker(args.ticker)
 
-# Get OHLCV data
-ohlc = ticker.history(start="2022-01-01", end="2024-12-31", interval="1d")
+ohlc = ticker.history(start=args.start, end=args.end, interval="1d")
 
-# Get dividend data
-dividends = ticker.dividends.loc["2022-01-01":"2024-12-31"]
+dividends = ticker.dividends.loc[args.start:args.end]
 
 # Save to CSV
-ohlc.to_csv("SPY_ohlc.csv")
-dividends.to_csv("SPY_dividends.csv")
+ohlc.to_csv(f"{args.ticker}_ohlc.csv")
+dividends.to_csv(f"{args.ticker}_dividends.csv")

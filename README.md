@@ -15,15 +15,22 @@ pip install -r requirements.txt
 
 ## Running the script
 
-Execute the script with Python to download the data:
+Execute the script with Python to download the data. You can optionally
+specify the ticker symbol and date range using command-line arguments:
 
 ```bash
+# Download SPY data using the defaults
 python pull_stock_data.py
+
+# Download AAPL data for a custom date range
+python pull_stock_data.py --ticker AAPL --start 2023-01-01 --end 2023-06-30
 ```
 
-This will generate the following files in the repository directory:
+The script generates two CSV files in the repository directory named after
+the ticker symbol:
 
-* `SPY_ohlc.csv` – daily OHLCV data
-* `SPY_dividends.csv` – dividend data
+* `<TICKER>_ohlc.csv` – daily OHLCV data
+* `<TICKER>_dividends.csv` – dividend data
 
-You can adjust the ticker or date ranges by editing `pull_stock_data.py`.
+If no arguments are supplied, it defaults to downloading SPY data from
+`2022-01-01` through `2024-12-31`.
