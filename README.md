@@ -55,8 +55,6 @@ bash -c 'streamlit run streamlit_app.py'
 ```
 
 Choose the ticker and dates in the app. The resulting OHLC data will be saved as
-`<TICKER>_<START>_<END>.csv` and previewed in the browser. If you select the
-**Download dividends** option, a single file containing both closing prices and
-dividends will be created. The combined column is named
-`ClosingPrice_Dividends` and the file will be stored in the directory specified
-in the **Download directory** text box (defaults to your Downloads folder).
+`<TICKER>_<START>_<END>.csv` and previewed in the browser. You can also opt to
+download dividend information for the same period, which will be saved as
+`<TICKER>_dividends_<START>_<END>.csv` and previewed below the price data.
