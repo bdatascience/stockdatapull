@@ -1,6 +1,5 @@
 # Ignore generated CSV files
-SPY_ohlc.csv
-SPY_dividends.csv
+*.csv
 
 # Python artifacts
 __pycache__/

@@ -39,3 +39,13 @@ This will generate the following files in the repository directory:
 * `SPY_dividends.csv` – dividend data
 
 You can adjust the ticker or date ranges by editing `pull_stock_data.py`.
+
+## Using the Streamlit interface
+
+You can also download data through the Streamlit app. Run:
+
+```bash
+streamlit run streamlit_app.py
+```
+
+Choose the ticker and dates in the app. The resulting CSV will be saved as `<TICKER>_<START>_<END>.csv`.
