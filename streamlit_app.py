@@ -27,6 +27,9 @@ if st.button("Download Data"):
     else:
         data = yf.download(symbol, start=start_date, end=end_date, interval="1d")
         data.index = data.index.tz_localize(None)
+        if isinstance(data["Close"], pd.DataFrame):
+            st.error("Multiple tickers are not supported. Please enter one symbol.")
+            st.stop()
         if monthly_only:
             data = filter_first_day_month(data)
 
