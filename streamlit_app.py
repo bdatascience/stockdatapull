@@ -21,6 +21,7 @@ if st.button("Download Data"):
         st.error("Start date must be before end date")
     else:
         data = yf.download(symbol, start=start_date, end=end_date, interval="1d")
+        data.index = data.index.tz_localize(None)
         if monthly_only:
             data = filter_first_day_month(data)
         file_name = f"{symbol}_{start_date}_{end_date}.csv"
@@ -29,6 +30,7 @@ if st.button("Download Data"):
         if show_dividends:
             ticker = yf.Ticker(symbol)
             dividends = ticker.dividends.loc[str(start_date):str(end_date)]
+            dividends.index = dividends.index.tz_localize(None)
             div_file = f"{symbol}_dividends_{start_date}_{end_date}.csv"
             if not dividends.empty:
                 dividends.to_csv(div_file)
