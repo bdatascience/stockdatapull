@@ -1,13 +1,14 @@
 import streamlit as st
 import yfinance as yf
 from datetime import date
+import pandas as pd
 
 from pull_stock_data import filter_first_day_month
 
 st.title("Stock Data Downloader")
 
 # Inputs
-symbol = st.text_input("Ticker symbol", "SPY")
+symbol = st.text_input("Ticker symbol", "QQQ")
 start_date = st.date_input("Start date", value=date(2022, 1, 1))
 end_date = st.date_input("End date", value=date.today())
 monthly_only = st.checkbox("First day of each month only", value=True)
@@ -25,7 +26,6 @@ if st.button("Download Data"):
         file_name = f"{symbol}_{start_date}_{end_date}.csv"
         data.to_csv(file_name)
         st.success(f"Data saved to {file_name}")
-        st.dataframe(data)
         if show_dividends:
             ticker = yf.Ticker(symbol)
             dividends = ticker.dividends.loc[str(start_date):str(end_date)]
@@ -33,6 +33,14 @@ if st.button("Download Data"):
             if not dividends.empty:
                 dividends.to_csv(div_file)
                 st.success(f"Dividends saved to {div_file}")
-                st.dataframe(dividends)
             else:
                 st.info("No dividend data found for the selected period")
+            union_df = pd.concat(
+                [
+                    dividends.to_frame(name="Dividends"),
+                    data[["Close"]].rename(columns={"Close": "Dividends"}),
+                ]
+            ).sort_index()
+            st.dataframe(union_df)
+        else:
+            st.dataframe(data)

@@ -1,7 +1,7 @@
 # Stock Data Pull
 
 This repository contains a small script for downloading historical data for the
-SPY ETF using [yfinance](https://github.com/ranaroussi/yfinance). The script
+QQQ ETF using [yfinance](https://github.com/ranaroussi/yfinance). The script
 retrieves price data and dividend information and stores them as CSV files. By
 default the price data includes only the first trading day of each month.
 
@@ -35,8 +35,8 @@ python pull_stock_data.py
 
 This will generate the following files in the repository directory:
 
-* `SPY_monthly_ohlc.csv` – the first trading day of each month
-* `SPY_dividends.csv` – dividend data for the same period
+* `QQQ_monthly_ohlc.csv` – the first trading day of each month
+* `QQQ_dividends.csv` – dividend data for the same period
 
 You can adjust the ticker or date ranges by editing `pull_stock_data.py`.
 
