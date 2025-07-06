@@ -48,4 +48,10 @@ You can also download data through the Streamlit app. Run:
 streamlit run streamlit_app.py
 ```
 
+From a Bash shell you can also start it with:
+
+```bash
+bash -c 'streamlit run streamlit_app.py'
+```
+
 Choose the ticker and dates in the app. The resulting CSV will be saved as `<TICKER>_<START>_<END>.csv`.
